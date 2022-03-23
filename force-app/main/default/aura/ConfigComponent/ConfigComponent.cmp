@@ -1,0 +1,51 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="ConfigController" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />  
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="allConfigs" type="Object" />
+    <aura:attribute name="ConfigsSize" type="Integer" default="0"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="selectedConfigIds" type="List"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="5"/>
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="isdisabled" type="Boolean" default="false" />
+    
+    
+    <lightning:layout class="slds-wrap">
+        <lightning:layoutItem  flexibility="auto" size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12">
+            <lightning:card>
+                <div class="slds-grid slds-wrap slds-m-bottom_medium">
+                    <div class="slds-col slds-size_11-of-12 card-title">
+                        <lightning:icon iconName="custom:custom3" size="small" class="slds-m-left_small"/>
+                        <span class="slds-m-left_x-small"> Available Configs ({!v.ConfigsSize})</span>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-12">
+                        <lightning:button label="Add" title="Add" onclick="{! c.handleClick }" disabled="{!v.isdisabled}"/>                
+                    </div>
+                </div>
+                <aura:if isTrue="{!v.allConfigs}">
+                    <lightning:datatable
+                                         columns="{! v.columns }"
+                                         data="{! v.allConfigs }"
+                                         keyField="id"
+                                         maxRowSelection="{! v.maxRowSelection }"
+                                         onrowselection="{! c.updateSelectedText }"
+                                         defaultSortDirection="{!v.defaultSortDirection}"
+                                         sortedDirection="{!v.sortDirection}"
+                                         sortedBy="{!v.sortedBy}"
+                                         onsort="{!c.handleSort}"/>
+                    <aura:set attribute="else">
+                        <p class="slds-m-around_medium empty-list">No Config data available</p>
+                    </aura:set> 
+                </aura:if>
+            </lightning:card>
+        </lightning:layoutItem><br/>
+        <lightning:layoutItem  flexibility="auto" size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12">
+            <c:CaseConfigComponent aura:id="childCmp" caseId="{!v.recordId}" isdisabled="{!v.isdisabled}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,15 @@
+.THIS .slds-wrap{
+    border-radius:3px;
+
+}
+.THIS .slds-text-heading_small{
+    font-size:15px !important;
+}
+.THIS .empty-list{
+    font-size:14px;
+}
+
+.THIS .card-title{
+    font-size:15px;
+    font-weight:bold;
+}

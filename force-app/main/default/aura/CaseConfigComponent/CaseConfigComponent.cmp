@@ -1,0 +1,33 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="ConfigController">
+    
+    <aura:method name="refreshData" action="{!c.doAction}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="caseId" type="String" />
+    <aura:attribute name="allCaseConfigs" type="Object" />
+    <aura:attribute name="caseConfigsSize" type="Integer" default="0" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="isdisabled" type="Boolean" />
+    
+    <lightning:card>
+        <div class="slds-grid slds-wrap slds-m-bottom_medium">
+            <div class="slds-col slds-size_11-of-12 card-title">
+                <lightning:icon iconName="custom:custom3" size="small" class="slds-m-left_small"/>
+                <span class="slds-m-left_x-small"> Case Configs ({!v.caseConfigsSize})</span>
+            </div>
+            
+            <div class="slds-col slds-size_1-of-12">
+                <lightning:button label="Send" title="Send" onclick="{!c.handleNext}" disabled="{!v.isdisabled}" />                
+            </div>
+        </div>
+        <aura:if isTrue="{!v.allCaseConfigs}">
+            <lightning:datatable
+                                 columns="{! v.columns }"
+                                 data="{! v.allCaseConfigs }"
+                                 keyField="id"
+                                 />
+            <aura:set attribute="else">
+                <p class="slds-m-around_medium empty-list">No Config data available</p>
+            </aura:set> 
+        </aura:if>
+    </lightning:card>
+</aura:component>

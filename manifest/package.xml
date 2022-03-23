@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<types>
+    <members>ConfigController</members>
+    <members>ConfigControllerTest</members>
+    <members>configCalloutMock</members>
+    
+    <name>ApexClass</name>
+</types>
+
+<types>
+    <members>ConfigComponent</members>
+    <members>CaseConfigComponent</members>
+    <name>AuraDefinitionBundle</name>
+</types>
+<types>
+    <members>Config__c</members>
+    <members>Case_Config__c</members>
+    <name>CustomObject</name>
+</types>
+<types>
+    <members>Config__c.Name</members>
+    <members>Config__c.Label__c</members>
+    <members>Config__c.Amount__c</members>
+    <members>Config__c.Type__c</members>
+    <members>Case_Config__c.Name</members>
+    <members>Case_Config__c.Label__c</members>
+    <members>Case_Config__c.Amount__c</members>
+    <members>Case_Config__c.Type__c</members>
+    <members>Case_Config__c.Case__c</members>
+    <members>Case_Config__c.Config__c</members>
+    <name>CustomField</name>
+</types>
+<types>
+<members>Config__c-Config Layout</members>
+<name>Layout</name>
+</types>
+<types>
+<members>Config__c</members>
+<name>CustomTab</name>
+</types>
+<types>
+<members>Case_Config_Layout</members>
+<name>FlexiPage</name>
+</types>
+<version>52.0</version>
+</Package>
